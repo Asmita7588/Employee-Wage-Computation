@@ -1,9 +1,8 @@
 import java.util.Random;
 
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("Welcome to Employee Wage Computation Program on Master Branch");
-
+ // Method to compute employee wage
+    public static void computeEmployeeWage() {
         final int IS_PRESENT = 1;
         final int WAGE_PER_HOUR = 20;
         final int FULL_DAY_HOURS = 8;
@@ -22,9 +21,10 @@ public class Main {
         // Generate random attendance (0 or 1)
         int attendance = random.nextInt(3); // Generates 0 or 1 and 2
 
-        System.out.println("Employee Attendance Check:");
+        //System.out.println("Employee Attendance Check:");
 
-        System.out.println("Employee Daily Wage Calculation:");
+       // System.out.println("Employee Daily Wage Calculation:");
+
 
         int totalWorkingHour = 0;
         int totalWorkingDay = 0;
@@ -32,46 +32,51 @@ public class Main {
         while(totalWorkingHour < MAXIMUM_WORKING_HOURS && totalWorkingDay < MAXIMUM_WORKING_DAYS) {
 
             attendance = random.nextInt(3);
-            int dailyHours = 0;
+            int empHours = 0;
 
 
             switch (attendance) {
 
                 case IS_FULL_TIME:
-                    dailyHours = FULL_DAY_HOURS;
+                    empHours = FULL_DAY_HOURS;
                     System.out.println("Day " +(totalWorkingDay +1)  );
-                    System.out.println("Full Time Hours Worked: " + dailyHours);
+                    System.out.println("Full Time Hours Worked: " + empHours);
                     break;
                 case IS_PART_TIME:
-                    dailyHours = PART_TIME_HOURS;
-                    System.out.println("Day " + (totalWorkingDay +1) + "Part Time Hours Worked " +dailyHours);
+                    empHours = PART_TIME_HOURS;
+                    System.out.println("Day " + (totalWorkingDay +1) + "Part Time Hours Worked " +empHours);
                     break;
 
                 default:
                     System.out.println(" Day "+(totalWorkingDay +1)+  "Employee is Absent hours worked: 0");
             }
-            totalWorkingHour +=dailyHours;
+            totalWorkingHour +=empHours;
 
             if (totalWorkingHour > MAXIMUM_WORKING_HOURS) {
-                dailyHours -= (totalWorkingHour - MAXIMUM_WORKING_HOURS);
+               // dailyHours -= (totalWorkingHour - MAXIMUM_WORKING_HOURS);
                 totalWorkingHour = MAXIMUM_WORKING_HOURS;
             }
 
             // Calculate daily wage and add to the total wage
-            int dailyWage = WAGE_PER_HOUR * dailyHours;
+            int dailyWage = WAGE_PER_HOUR * empHours;
             totalMonthlyWages += dailyWage;
-            totalMonthlyWages += dailyWage;
+            System.out.println("Day " + totalWorkingDay + ": Worked " + empHours + " hours, Daily Wage: " + dailyWage);
 
 
 
 
             // Increment working days only if the employee worked
-            if (dailyHours > 0) {
+            if (empHours > 0) {
                 totalWorkingDay++;
             }
         }
         System.out.println("Total working hours " + totalWorkingHour);
         System.out.println("Total working DAY " + totalWorkingDay);
         System.out.println("Total Monthly Wages " + totalMonthlyWages);
-    }
+        }
+
+  public static void main(String[] args) {
+    System.out.println("Welcome to Employee Wage Computation Program on Master Branch");
+      computeEmployeeWage(); // Call the class method
+ }
 }
