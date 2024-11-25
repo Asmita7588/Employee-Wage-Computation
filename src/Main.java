@@ -24,16 +24,20 @@ public class Main {
 
         int dailyWage = 0;
         // Check if the employee is present or absent
-        if (attendance == IS_FULL_TIME) {
-             dailyWage = WAGE_PER_HOUR * FULL_DAY_HOURS;
-            System.out.println("Employee is Full Time");
-            System.out.println("Daily Wage: " + dailyWage);
-        } else if (attendance == IS_PART_TIME){
-            dailyWage = WAGE_PER_HOUR * PART_TIME_HOURS;
-            System.out.println("Employee is Part tIME");
-        }
-        else {
-            System.out.println("Employee is Absent");
+        switch (attendance ){
+
+            case  IS_FULL_TIME :
+                   dailyWage = WAGE_PER_HOUR * FULL_DAY_HOURS;
+                   System.out.println("Employee is Full Time");
+                   System.out.println("Daily Wage: " + dailyWage);
+                   break;
+            case  IS_PART_TIME:
+                        dailyWage = WAGE_PER_HOUR * PART_TIME_HOURS;
+                        System.out.println("Employee is Part tIME");
+                        break;
+
+        default:
+                 System.out.println("Employee is Absent");
         }
         System.out.println("Daily Wage: " + dailyWage);
     }
